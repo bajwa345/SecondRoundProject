@@ -1,4 +1,4 @@
-﻿using System.Data;
+using System.Data;
 using Dapper;
 using System.Threading.Tasks;
 using SecondRoundProject.Models;
@@ -16,6 +16,11 @@ namespace SecondRoundProject.Repositories
             _logger = logger;
         }
 
+        /// <summary>
+        /// Checks if any Application User already exists with username.
+        /// </summary>
+        /// <param name="username">The username of user to search.</param>
+        /// <returns>Return the matched Application User object.</returns>
         public async Task<ApplicationUser?> GetUserByUsernameAsync(string username)
         {
             try
@@ -38,6 +43,11 @@ namespace SecondRoundProject.Repositories
             }
         }
 
+        /// <summary>
+        /// Adds a new Application User to the database.
+        /// </summary>
+        /// <param name="user">The application user object to be added.</param>
+        /// <returns>Return the id of newly inserted application user.</returns>
         public async Task<int?> CreateUserAsync(ApplicationUser user)
         {
             try
@@ -57,5 +67,4 @@ namespace SecondRoundProject.Repositories
             }
         }
     }
-
 }
